@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source './bin/strict-mode'
+
+echo "-- Starting server --"
+(cd packages/server && NGROK_HOST=$NGROK_HOST npm run dev) &
+
+echo "-- Starting client --"
+(cd packages/client && REACT_APP_SERVER_HOST=$NGROK_HOST npm run dev)

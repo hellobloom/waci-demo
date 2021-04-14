@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "-- Server Reset Dev --"
+
+current_node_env="${NODE_ENV:-development}"
+
+is_production() {
+  [ "$current_node_env" == "production" ]
+}
+
+if is_production; then
+  echo "Woah! Running this in production is a bad idea. Exiting"
+  exit 1
+fi
+
+echo "-- Server Reset DB --"
+dropdb --if-exists waci-demo-dev
+createdb waci-demo-dev
+
+./bin/build
+./bin/migrate

@@ -1,0 +1,20 @@
+.loading--blinking-dots {
+  &__dot {
+    animation: 1s infinite;
+    animation-name: blink;
+
+    &:nth-child(2) {
+      animation-delay: 250ms;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 500ms;
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    color: transparent;
+  }
+}

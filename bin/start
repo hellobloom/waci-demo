@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source './bin/strict-mode'
+
+echo "-- Starting server --"
+cd packages/server && npm run start

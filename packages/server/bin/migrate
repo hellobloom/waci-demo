@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "-- Server Run Migrations --"
+
+./node_modules/.bin/ts-node -r ./tsconfig-paths.js ./node_modules/typeorm/cli.js migration:run

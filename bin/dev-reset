@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source './bin/strict-mode'
+
+echo "-- Resetting server --"
+(cd packages/server && npm run dev:reset)

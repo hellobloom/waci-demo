@@ -1,0 +1,31 @@
+#!/bin/bash
+
+source './bin/strict-mode'
+
+# Bootstrap the packages and install other deps needed
+npm run bootstrap
+
+# Pack the shared package
+cd packages/shared
+npm pack
+mv waci-demo-*.tgz ../../waci-demo.tgz
+cd ../../
+
+# Build the client
+cd packages/client
+cp ../../waci-demo.tgz .
+npm install --save ./waci-demo.tgz
+npm run build
+cd ../../
+
+# Build the server
+cd packages/server
+cp ../../waci-demo.tgz .
+npm install --save ./waci-demo.tgz
+npm run build
+cd ../../
+
+
+# Move client assets into server
+mkdir packages/server/build/public
+cp -r packages/client/build/* packages/server/build/public/.

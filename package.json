@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "build": "./bin/build",
+    "start": "./bin/start",
+    "dev": "./bin/dev",
+    "dev:ngrok": "node ./bin/dev-ngrok.js",
+    "dev:reset": "./bin/dev-reset"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2",
+    "ngrok": "^4.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "-- Server Dev --"
+
+node_modules/.bin/tsc-watch -p tsconfig.build.json --onSuccess "bin/dev-services"
