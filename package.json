@@ -9,7 +9,7 @@
     "dev:reset": "./bin/dev-reset"
   },
   "devDependencies": {
-    "lerna": "^3.20.2",
-    "ngrok": "^4.0.0"
+    "lerna": "^4.0.0",
+    "ngrok": "^4.0.1"
   }
 }
