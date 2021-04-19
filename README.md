@@ -30,6 +30,6 @@ cd ../../
 ### Run
 
 ```
-npm run reset-dev
+npm run dev:reset
 npm run dev
 ```

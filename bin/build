@@ -8,20 +8,27 @@ npm run bootstrap
 # Pack the shared package
 cd packages/shared
 npm pack
-mv waci-demo-*.tgz ../../waci-demo.tgz
+mv waci-demo-shared*.tgz ../../waci-demo-shared.tgz
+cd ../../
+
+cd packages/waci-core
+npm pack
+mv waci-demo-waci-core*.tgz ../../waci-demo-waci-core.tgz
 cd ../../
 
 # Build the client
 cd packages/client
-cp ../../waci-demo.tgz .
-npm install --save ./waci-demo.tgz
+cp ../../waci-demo-shared.tgz .
+cp ../../waci-demo-waci-core.tgz .
+npm install --save ./waci-demo-shared.tgz ./waci-demo-waci-core.tgz
 npm run build
 cd ../../
 
 # Build the server
 cd packages/server
-cp ../../waci-demo.tgz .
-npm install --save ./waci-demo.tgz
+cp ../../waci-demo-shared.tgz .
+cp ../../waci-demo-waci-core.tgz .
+npm install --save ./waci-demo-shared.tgz ./waci-demo-waci-core.tgz
 npm run build
 cd ../../
 

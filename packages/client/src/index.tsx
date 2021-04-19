@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { StrictMode, FC } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -28,12 +28,6 @@ const App: FC = () => (
         <SignIn />
       </SignedOutUserShell>
     </EntryRoute>
-
-    {/* <EntryRoute exact path={sitemap.authenticate(':token')} loadingFallback={<LoadingUserShell />}>
-      <SignedOutUserShell titleSuffix="Authenticate">
-        <Authenticate />
-      </SignedOutUserShell>
-    </EntryRoute> */}
 
     <Route exact path={sitemap.authenticate(':token')}>
       <SignedOutUserShell titleSuffix="Authenticate">
@@ -82,7 +76,7 @@ const queryClient = new QueryClient({
 })
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <LocalClientProvider>
       <UserContextProvider>
         <QueryClientProvider client={queryClient}>
@@ -93,7 +87,7 @@ ReactDOM.render(
         </QueryClientProvider>
       </UserContextProvider>
     </LocalClientProvider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );
 

@@ -145,7 +145,11 @@ export const applyUsersRoutes = (app: FastifyInstance): void => {
           output_descriptors: [
             {
               id: 'account_output',
-              schema: 'https://schema.affinity-project.org/AccountCredentialPersonV1',
+              schema: [
+                {
+                  uri: 'https://schema.affinity-project.org/AccountCredentialPersonV1'
+                }
+              ],
               display: {
                 title: {
                   text: 'WACI Demo Account',
@@ -262,7 +266,7 @@ export const applyUsersRoutes = (app: FastifyInstance): void => {
           keyId: app.key.keyPair.id,
           privateKey: '',
         },
-        getSignSuite: async ({controller, keyId}) => {
+        getSignSuite: async () => {
           return new JsonWebSignature({
             key: await JsonWebKey.from(app.key.keyPair.toJsonWebKeyPair(true)),
           });
@@ -280,7 +284,7 @@ export const applyUsersRoutes = (app: FastifyInstance): void => {
           context: [
             'https://w3id.org/security/jws/v1',
             {
-            '@version': 1.1,
+              '@version': 1.1,
               CredentialFulfillment: {
                 '@id':
                   'https://identity.foundation/credential-manifest/#credential-fulfillment',
@@ -318,7 +322,7 @@ export const applyUsersRoutes = (app: FastifyInstance): void => {
           keyId: app.key.keyPair.id,
           privateKey: '',
         },
-        getSignSuite: async ({controller, keyId}) =>
+        getSignSuite: async () =>
           new JsonWebSignature({
             key: await JsonWebKey.from(app.key.keyPair.toJsonWebKeyPair(true)),
           }),
